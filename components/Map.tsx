@@ -45,8 +45,8 @@ const pixelToLatLng = (
   imageWidth: number,
   imageHeight: number
 ): LatLngTuple => {
-  const southWest = imageBounds.getSouthWest()
-  const northEast = imageBounds.getNorthEast()
+  const southWest = imageBounds?.getSouthWest()
+  const northEast = imageBounds?.getNorthEast()
 
   const southWestLat = southWest.lat
   const southWestLng = southWest.lng
@@ -101,9 +101,9 @@ const Map: React.FC = () => {
     lng
   ])
 
-  const polygon = turf.polygon([polygonCoords])
-  const area = turf.area(polygon) // in square meters
-  const perimeter = turf.length(polygon, { units: "kilometers" })
+  const polygon = turf?.polygon([polygonCoords])
+  const area = turf?.area(polygon) // in square meters
+  const perimeter = turf?.length(polygon, { units: "kilometers" })
 
   return (
     <>
@@ -125,13 +125,13 @@ const Map: React.FC = () => {
 
         <Polygon positions={polygonLatLngs} color="blue" opacity={0.5}>
           <Tooltip direction="bottom" offset={[0, 0]} opacity={1} permanent>
-            Area: {(area / 1e6).toFixed(2)} km²
+            Area: {(area / 1e6)?.toFixed(2)} km²
             <br />
-            Perimeter: {perimeter.toFixed(2)} km
+            Perimeter: {perimeter?.toFixed(2)} km
           </Tooltip>
         </Polygon>
 
-        {robotPositions.map((robot) => (
+        {robotPositions?.map((robot) => (
           <Marker
             key={robot.id}
             position={[robot.lat, robot.lng]}
