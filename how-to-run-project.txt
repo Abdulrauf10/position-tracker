@@ -1,0 +1,4 @@
+How to run this project on your local device
+
+- yarn install / npm install
+- yarn dev / npm run dev
